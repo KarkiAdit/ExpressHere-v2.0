@@ -1,3 +1,4 @@
+import React from "react";
 import '../styles/UserProfile.css'
 import NavBar from './NavBar';
 import MainDash from './MainDash';

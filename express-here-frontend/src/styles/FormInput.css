@@ -1,7 +1,8 @@
 .formInput{
     display: flex;
     flex-direction: column;
-    width: 280px;
+    width: 30vw;
+    margin: 1rem;
 }
 
 .formInput input{
@@ -24,7 +25,7 @@
 }
 
 .formInput .input1{
-    height: 85px;
+    height: 150px;
 }
 
 .formInput input::placeholder{
@@ -50,4 +51,11 @@ input:invalid[focused="true"]{
 
 input:invalid[focused="true"] ~ span{
     display: block;
+}
+
+.formInput select {
+    padding: 1rem 1.5rem;
+    width: 85px;
+    align-self: center;
+    height: 60px;
 }

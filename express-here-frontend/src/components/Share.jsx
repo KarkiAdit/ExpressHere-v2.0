@@ -1,16 +1,19 @@
+import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Share.css";
+import NavBar from "./NavBar";
 import FormInput from "./FormInput";
+import SelectInput from "./SelectInput";
 
 const Share = (props) => {
   let navigate = useNavigate()
   const initialValue = {
-      postID: `${props.user.userID}*%${generateUID()}`,
+      postID: `55${generateUID()}671`,
       author: `${props.user.name}`,
       post: "",
       postType: false,
-      relevantKeywords: "",
+      highlight: "Happy",
     };
 
     function generateUID() {
@@ -29,20 +32,51 @@ const Share = (props) => {
       id: 1,
       name: "post",
       type: "text",
-      placeholder: "I want to share my experience of...",
-      required: true,
+      placeholder: "I'm feeling...",
+      required: true
     },
     {
       id: 3,
-      name: "relevantKeywords",
-      type: "text",
-      placeholder: "Love, Sad ...",
+      name: "highlight",
+      default: "Happy",
       label: "Highlights",
+      options: [
+        {
+          value: "Happy",
+          emo: "😊" 
+        },
+        {
+          value: "Sad",
+          emo: "😞" 
+        },
+        {
+          value: "Puzzled",
+          emo: "😬" 
+        },
+        {
+          value: "Love",
+          emo: "😍" 
+        },
+        {
+          value: "Sick",
+          emo: "🤒" 
+        },
+        {
+          value: "Thoughful",
+          emo: "🧐" 
+        },
+        {
+          value: "Angry",
+          emo: "😡" 
+        }
+      ],
+      required: true
     }
   ];
 
   const onAlter = (e) => {
       setValues({ ...values, [e.target.name]: e.target.value });
+      console.log(values)
 }
 
 const handleSubmit = async (e) => {
@@ -66,29 +100,35 @@ const handleSubmit = async (e) => {
   }
 }
   return (
-    <div className="share-section">
-      <form onSubmit={handleSubmit}>
-        <h1>Share Anything!</h1>
-        {inputs.map((input) => (
+    <>
+      <NavBar />
+      <div className="share-section">
+        <form onSubmit={handleSubmit}>
           <FormInput
-            key={input.id}
-            {...input}
-            value={values[input.name]}
+            key={inputs[0].id}
+            {...inputs[0]}
+            value={values[inputs[0].name]}
             onChange={onAlter}
           />
-        ))}
-        <h2>How do you want to make this post?</h2>
-        <div class="postType">
-          <label for="anon">Anonymous</label>
-          <input name="postType" type="radio" value="anonymous" id="anon" onChange={e => setValues({...values, postType: false})} required="true"></input>
-        </div>
-        <div className="postType">
-          <label for="userN">Use My Name</label>
-          <input name="postType" type="radio" value="username" id="userN" onChange={e => setValues({...values, postType: true})} required="true"></input>
-        </div>
-        <input type="submit" value="Submit" className="btn solid" />
-      </form>
-    </div>
+          <h2>Highlights</h2>
+          <SelectInput 
+            key={inputs[1].id}
+            {...inputs[1]}
+            value={values[inputs[1].name]}
+            onChange={onAlter}/>
+          <h2>Make post</h2>
+          <div class="postType">
+            <label for="anon">Anonymous</label>
+            <input name="postType" type="radio" value="anonymous" id="anon" onChange={e => setValues({...values, postType: false})} required="true"></input>
+          </div>
+          <div className="postType">
+            <label for="userN">By My Name</label>
+            <input name="postType" type="radio" value="username" id="userN" onChange={e => setValues({...values, postType: true})} required="true"></input>
+          </div>
+          <input type="submit" value="Submit" className="btn solid" />
+        </form>
+      </div>
+    </>
   );
 };
 

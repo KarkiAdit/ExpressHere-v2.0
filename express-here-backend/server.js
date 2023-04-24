@@ -15,7 +15,7 @@ const options = {
   useUnifiedTopology: true,
 };
 
-const dbUrl = `mongodb+srv://expressherev01:vkkrd5msvkwN5rYH@cluster0.jac2lby.mongodb.net/?retryWrites=true&w=majority`;
+const dbUrl = `mongodb+srv://expressherev01:ctRfmWsDF9gSZsUZ@cluster0.jac2lby.mongodb.net/?retryWrites=true&w=majority`;
 
 mongoose.connect(dbUrl, options, (err) => {
   if (err) console.log(err);
@@ -29,6 +29,12 @@ db.once("open", function () {
 
 const Schema = mongoose.Schema;
 
+const commentSchema = new Schema({
+  commentID: { type: String, required: true },
+  associatedPostID: { type: String, required: true },
+  commentBody: { type: String, default: "" },
+});
+
 const postSchema = new Schema(
   {
     postID: { type: String, required: true },
@@ -37,8 +43,9 @@ const postSchema = new Schema(
     comments: { type: Number, default: 0 },
     supports: { type: Number, default: 0 },
     saves: { type: Number, default: 0 },
+    postCommentsIDs: { type: Array, default: [] }, // ids of user made posts
     postType: { type: String, required: true }, // false signifies that the user wants to post anonymously
-    relevantKeywords: [String], // comma seperated keywords
+    highlight: { type: String, required: true },
   },
   { timestamps: true }
 );
@@ -48,9 +55,11 @@ const userSchema = new Schema({
   name: { type: String, required: true },
   savedPostsIDs: { type: Array, default: [] }, // ids of saved posts
   userPostsIDs: { type: Array, default: [] }, // ids of user made posts
+  userCommentsIDs: { type: Array, default: [] }, // ids of user made posts
   password: { type: String, required: true },
 });
 
+const commentModel = mongoose.model("comment", commentSchema);
 const postModel = mongoose.model("post", postSchema);
 const userModel = mongoose.model("user", userSchema);
 
@@ -133,15 +142,63 @@ app.post("/share/:userID", async (req, res) => {
     if (!req.body.postType) {
       req.body.author = `anon${req.body.postID.length}`;
     }
-    // store relevant keywords as array
-    const relevantKeywords = req.body.relevantKeywords.trim().split(" ");
-    req.body.relevantKeywords = relevantKeywords;
     // add post to postSchema
     let post = new postModel(req.body);
     post = await post.save();
     res.status(200).json({
       status: 200,
       data: post,
+    });
+  } catch (err) {
+    // report error if ran under any issues
+    console.log(err.message);
+    res.status(500).json({
+      status: 500,
+      message: err.message,
+    });
+  }
+});
+
+app.get("/comments/:postID", async (req, res) => {
+  try {
+    let post = await postModel.findOne({ postID: req.params.postID });
+    let filteredComments = await Promise.all(
+      post.postCommentsIDs.map(
+        async (ID) => await commentModel.findOne({ commentID: ID })
+      )
+    );
+    res.status(200).json({
+      status: 200,
+      data: filteredComments,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 400,
+      message: err.message,
+    });
+  }
+});
+
+app.post("/comment/:userID", async (req, res) => {
+  try {
+    // add commentID to the data of author who commented it
+    await userModel.findOneAndUpdate(
+      { userID: req.params.userID },
+      { $push: { userCommentsIDs: req.body.commentID } },
+      { new: true }
+    );
+    // add commentID to post data of respective post
+    await postModel.findOneAndUpdate(
+      { postID: req.body.associatedPostID },
+      { $push: { postCommentsIDs: req.body.commentID } },
+      { new: true }
+    );
+    // add the comment data making new comment model
+    let comment = new commentModel(req.body);
+    comment = await comment.save();
+    res.status(200).json({
+      status: 200,
+      data: comment,
     });
   } catch (err) {
     // report error if ran under any issues

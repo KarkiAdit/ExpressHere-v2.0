@@ -3,7 +3,7 @@
   height: 3rem;
   padding: 0 1rem;
   border-bottom: 1px solid #dedede;
-  background-color: #fafafabb;
+  background-color: #50537b;
   backdrop-filter: blur(4px);
   display: flex;
   flex-flow: row nowrap;
@@ -32,8 +32,9 @@
   height: 1.7rem;
   width: 100%;
   border: unset;
-  padding: 0 0.5em;
+  padding: 0 1em;
   font: inherit;
+  border-radius: 7px;
 }
 #nav-bar .search-bar .icon {
   width: 2rem;
@@ -148,7 +149,7 @@ button.primary-button:hover,
 
 button.secondary-button,
 .button.secondary-button {
-  color: var(--color-accent);
+  color: rgb(236, 232, 232);
   background: transparent;
 }
 button.secondary-button:hover,

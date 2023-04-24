@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import "../styles/FormInput.css";
 
@@ -11,9 +12,8 @@ const FormInput = (props) => {
   };
 
   return (
-    <div className="formInput">
-      <label>{label}</label>
-      <input className={`input${props.id}`}
+    <div className={props.type == "comment" ? "text-area" : "formInput"}>
+      <input className={props.type == "comment" ? "text-area" : "formInput"}
         {...inputProps}
         onChange={onChange}
         onBlur={handleFocus}

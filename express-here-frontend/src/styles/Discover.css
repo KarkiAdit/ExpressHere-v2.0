@@ -46,14 +46,15 @@ img {
 }
 
 .discover-card{
-    background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(232, 171, 171) 50%, rgba(246,243,248,1) 100%);    ;
+    background: #ba758d;
 }
 .blog-card{
-    background: #f0f0f0;
-    border-radius: .5rem;
+    background: #1e202e;
+    border: solid rgb(70, 70, 99) 10px;
+    box-shadow: 20px 20px 50px rgba(162, 159, 159, 0.5);
+    border-radius: 1rem;
     overflow: hidden;
     box-shadow: #000 0 0 .5rem -0.2rem;
-
     display: grid;
     grid: 
         'footer' auto
@@ -126,7 +127,7 @@ img {
 }
 .author {
     font-size: .8em;
-    color: #3c3c3c;
+    color: #afb3a9;
 }
 address {
     display: inline;

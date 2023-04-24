@@ -63,7 +63,7 @@ const Discover = (props) => {
       <span> on </span>
       <time>{evaluateDateAndTime(post.createdAt)}</time>
     </footer>
-    <Comments className="text-area"/>
+    <Comments className="text-area" postID={post.postID} userID={props.user.userID} commentsIDs={post.postCommentsIDs}/>
   </article>
   )})}
   </main>
