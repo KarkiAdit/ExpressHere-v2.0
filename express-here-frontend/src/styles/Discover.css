@@ -45,12 +45,9 @@ img {
     justify-content: flex-start;
 }
 
-.discover-card{
-    background: #ba758d;
-}
 .blog-card{
-    background: #1e202e;
-    border: solid rgb(70, 70, 99) 10px;
+    background: #131525;
+    border: solid rgb(70, 70, 99) 8px;
     box-shadow: 20px 20px 50px rgba(162, 159, 159, 0.5);
     border-radius: 1rem;
     overflow: hidden;

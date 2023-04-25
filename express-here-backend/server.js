@@ -31,6 +31,7 @@ const Schema = mongoose.Schema;
 
 const commentSchema = new Schema({
   commentID: { type: String, required: true },
+  commenterName: { type: String, required: true },
   associatedPostID: { type: String, required: true },
   commentBody: { type: String, default: "" },
 });
@@ -40,8 +41,6 @@ const postSchema = new Schema(
     postID: { type: String, required: true },
     author: { type: String, required: true },
     post: { type: String, require: true },
-    comments: { type: Number, default: 0 },
-    supports: { type: Number, default: 0 },
     saves: { type: Number, default: 0 },
     postCommentsIDs: { type: Array, default: [] }, // ids of user made posts
     postType: { type: String, required: true }, // false signifies that the user wants to post anonymously

@@ -43,6 +43,7 @@ function App() {
             <Discover
               user={user}
               posts={posts}
+              setPosts={setPosts}
               isLogged={isLogged}
               changeLogStatus={(newStatus) => setisLogged(newStatus)}
               updateUser={(currentUser) => setUser(currentUser)}

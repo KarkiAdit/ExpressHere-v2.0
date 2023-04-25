@@ -54,7 +54,7 @@ const NavBar = (props) => {
             </nav>
 
             <div className="search-bar">
-                <input type="text" name="search-value" placeholder="Search" />
+                <input type="text" name="search-value" placeholder="Search" value={props.searchInput} onChange={(e) => props.setSearchInput(e)}/>
                 <i src={require("../images/search-icon.svg")} alt="search-icon" className="icon search-icon"/>
             </div>
 

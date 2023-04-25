@@ -3,17 +3,16 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: linear-gradient(
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, 0.3)
-      ),
+    background: #e7ebf1,
       url(../images/share-background.png);
     background-size: cover;
     background-position: center;
   }
   
   .share-section form{
-      background-color: rgb(251, 247, 247);
+      background-color: #1e202e;
+      border: solid rgb(70, 70, 99) 8px;
+    box-shadow: 10px 5px 30px rgba(162, 159, 159, 0.5);
       padding: 0px 60px;
       border-radius: 10px;
   }
