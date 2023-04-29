@@ -2,7 +2,7 @@
 
 Submitted by: **ADITYA KARKI**
 
-This web app: **A fully responsive web social media application targetted towards college students. ExpressHere is a social media platform that helps connect students in build new and lasting relationships with other students. It is that place where students hear admit their mental issues, raise questions and learn from others’ experiences, and get answers that they have always wanted. **
+This web app: **A fully responsive web social media application targetted towards college students. ExpressHere is a social media platform that helps connect students in build new and lasting relationships with other students. It is that place where students hear admit their mental issues, raise questions and learn from others’ experiences, and get answers that they have always wanted.**
 
 Time spent: **40** hours spent in total
 
@@ -35,10 +35,10 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-* [ ] User can make anonymous posts
-* [ ] Users can save the posts they like and also delete it whenever they want to
-* [ ] User Authentication and login systems was contructed from Scratch
-* [ ] MERN stack was used
+* [+] User can make anonymous posts
+* [+] Users can save the posts they like and also delete it whenever they want to
+* [+] User Authentication and login systems was contructed from Scratch
+* [+] MERN stack was used
 
 ## Video Walkthrough
 
