@@ -14,22 +14,6 @@ const Discover = (props) => {
 
   const handleSearchInputChange = (e) => {
     setSearchInput(e.target.value)
-    // if (searchInput == ""){
-    //   setActivePosts([...initialPostsData])
-    //   return;
-    // }
-    // let showingPosts = props.posts.filter((post) => {
-    //   if (post.post.includes(searchInput)){
-    //     return post;
-    //   }
-    // })
-    // console.log(showingPosts);
-    // if (showingPosts.length == 0){
-    //   setActivePosts([...initialPostsData])
-    // } else {
-    //   setActivePosts([...showingPosts])
-    // }
-    // console.log(activePosts)
   }
 
   const handleCommentsClick = (e) =>{
