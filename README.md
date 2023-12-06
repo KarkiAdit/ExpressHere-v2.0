@@ -1,15 +1,8 @@
 # Web Development Final Project - *Express Here v2.0*
 
-Submitted by: **ADITYA KARKI**
-
 This web app: **A fully responsive web social media application targetted towards college students. ExpressHere is a social media platform that helps connect students in build new and lasting relationships with other students. It is that place where students hear admit their mental issues, raise questions and learn from others’ experiences, and get answers that they have always wanted.**
 
-Time spent: **40** hours spent in total
-
-## Required Features
-
-The following **required** functionality is completed:
-
+## Features
 - [+] **A create form that allows the user to create posts**
 - [+] **Posts have a title and optionally additional textual content and/or an image added as an external image URL**
 - [+] **A home feed displaying previously created posts**
@@ -21,9 +14,6 @@ The following **required** functionality is completed:
 - [+] **Users can leave comments underneath a post on the post's separate page**
 - [+] **Each post should have an upvote button on the post's page. Each click increases its upvotes count by one and users can upvote any number of times**
 - [+] **A previously created post can be edited or deleted from its post page**
-
-The following **optional** features are implemented:
-
 - [+] Users can only edit and deleted posts or delete comments by entering the secret key, which is set by the user during post creation
 - [+] Upon launching the web app, the user is assigned a random user ID. It will be associated with all posts and comments that they make and displayed on them.
 - [+] Users can repost a previous post by referencing its post ID. On the post page of the new post, the referenced post is displayed and linked, creating a thread
@@ -32,9 +22,6 @@ The following **optional** features are implemented:
 - [ ] Users can set flags while creating a post. Then users can filter posts by flags on the home feed.
 - [ ] Users can upload images directly from their local machine as an image file
 - [+] Display a loading animation whenever data is being fetched
-
-The following **additional** features are implemented:
-
 * [+] User can make anonymous posts
 * [+] Users can save the posts they like and also delete it whenever they want to
 * [+] User Authentication and login systems was contructed from Scratch
