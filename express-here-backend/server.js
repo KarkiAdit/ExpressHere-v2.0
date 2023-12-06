@@ -79,7 +79,7 @@ app.get("/", async (req, res) => {
 app.post("/login", async (req, res) => {
   try {
     const userData = await userModel.findOne({ userID: req.body.userID });
-    // if user exits, check whether the password matches
+    // if user exits, check whether the password matches or not
     if (userData.password === req.body.password) {
       console.log(userData);
       res.status(200).json({
