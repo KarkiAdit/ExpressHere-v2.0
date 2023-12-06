@@ -12,6 +12,7 @@ const FormInput = (props) => {
   };
 
   return (
+    // structure the comment elements
     <div className={props.type == "comment" ? "text-area" : "formInput"}>
       <input className={props.type == "comment" ? "text-area" : "formInput"}
         {...inputProps}
